@@ -1,0 +1,239 @@
+$color_1: #79D995;
+// $color_2: #bdbdbd;
+$color_2: #79A4D9;
+$color_3: #3E606F;
+
+$color_basefont: #3c3c3c;
+
+html, body
+{
+    // height: 100%;
+    // width: 100%;
+}
+
+body
+{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: $color_basefont;
+
+    background: linear-gradient(123deg, #79d995, #79a4d9, #7cf2ff);
+    background-size: 600% 600%;
+    animation: GradientAnimation 180s ease-in-out infinite;
+
+    @keyframes GradientAnimation { 
+        0%{
+          background-position:0% 53%;
+          // filter:hue-rotate(0deg)
+        }
+        50%{
+          background-position:100% 48%;
+          // filter:hue-rotate(100deg);
+        }
+        100%{
+          background-position:0% 53%;
+          // filter:hue-rotate(0deg);
+        }
+    }
+}
+
+#root
+{
+    // background: linear-gradient(135deg, $color_1, $color_2); // width: 100%;
+    // min-height: 100%;
+    // min-width: 100%;
+    // overflow-x: auto;
+
+    // display: flex;
+    // align-items: center;
+    // justify-content: center;
+}
+
+.game
+{
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-settings
+{
+  display: flex;
+  flex-direction: column;
+  width: 140px;
+  .new-game
+  {
+    margin-top: .5rem;
+    border: none;
+    border-radius: 2px;
+    padding: .5rem 1rem;
+    align-self: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+  }
+}
+
+.settings .label
+{
+  float: left;
+}
+.settings input
+{
+  float: right;
+  max-width: 3rem;
+}
+
+
+.game-main
+{
+  text-align: center;
+}
+.game-info
+{
+  margin: 0 4px;
+  font-size: 1.25rem;
+}
+
+.settings
+{
+  // display: flex;
+}
+
+.board-container
+{
+  overflow-x: auto;
+  /* overflow-y: visible; */
+  // padding-bottom: 2rem;
+  .board
+  {
+    overflow-x: auto;
+    display: inline-block;
+    padding: 0 .75rem 2rem .75rem;
+
+
+    .board-row
+    {
+        // white-space: nowrap;
+        display: flex;
+    }
+  }
+}
+
+
+.cell {
+    // flex: 1 1 1em;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 0;
+    // background: none;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    border-radius: 2px;
+    // flex: 1 1 auto;
+    border: none;
+    margin: 4px;
+    font-size: 1.5rem;
+    color: $color_basefont;
+    // overflow: visible;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+    transition: background .5s ease-in-out, box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+
+    &:focus
+    {
+      outline: none;
+    }
+
+    &.revealed
+    {
+      background: none;
+      box-shadow: none;
+    }
+
+    &.unsure
+    {
+      background: #f8ed9b;
+    }
+    &.flagged
+    {
+      background: #ff9393;
+    }
+    // .flipper
+    // {
+    //   width: 100%;
+    //   height: 100%;
+    //   // position: absolute;
+    //   transform-style: preserve-3d;
+    //   transition: transform 1s;
+    //   // overflow: visible;
+
+
+    //   figure
+    //   {
+    //     margin: 0;
+    //     display: block;
+    //     position: absolute;
+    //     width: 100%;
+    //     height: 100%;
+    //     backface-visibility: hidden;
+    //   }
+    //   .front
+    //   {
+    //     // background: red;
+    //     // box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    //     // transition: box-shadow 0.3s cubic-bezier(.25,.8,.25,1);
+    //     background: rgba(255, 255, 255, 0.6);
+    //   }
+
+    //   .back
+    //   {
+    //     // background: blue;
+    //     transform: rotateY( 180deg );
+    //   }
+    // }
+    // &.revealed .flipper
+    // {
+    //   transform: rotateY( 180deg );
+    // }
+}
+
+// .blank.cell .flipper:hover .front
+// {
+//   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+// }
+.blank.cell:hover
+{
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.flagged .cell{
+    background: #ff9393;
+}
+
+.unsure .cell{
+    background: #f8ed9b;
+}
+
+
+.revealed {
+
+    &.one {
+        background: #AECAE3;
+    }
+    &.two {}
+    &.three {}
+    &.four {}
+    &.five {}
+    &.six {}
+    &.seven {}
+    &.eight {}
+}
+
+.revealed.mine {
+    // background: red;
+}
+
+.processed {
+    // background: blue;
+}
