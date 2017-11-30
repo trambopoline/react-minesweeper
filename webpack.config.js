@@ -1,13 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
-  entry: './src/index.jsx',
-  output:
-    {
-      filename: 'bundle.js',
-      path: path.resolve(__dirname, 'dist')
-    },
+let config = {
   devServer:
     {
       contentBase: path.join(__dirname, "dist"),
@@ -42,3 +36,25 @@ module.exports = {
   })]
 };
 
+let templateConfig = Object.assign({}, config, {
+  entry: './src/wrapper.js',
+  output: {
+    libraryTarget: 'var',
+    library: 'showAppTemplate',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'app-template.js',
+  },
+});
+let standaloneConfig = Object.assign({}, config, {
+  entry: './src/index.jsx',
+  output:
+    {
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'dist')
+    },
+});
+
+// Return Array of Configurations
+module.exports = [
+  templateConfig, standaloneConfig,
+];
