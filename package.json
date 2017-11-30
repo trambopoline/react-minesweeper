@@ -2,20 +2,21 @@
   "name": "@tramampoline/react-minesweeper",
   "version": "0.2.1",
   "description": "A minesweeper implementation built in ReactJS",
-  "main": "src/index.js",
+  "url": "https://github.com/trambopoline/react-minesweeper/issues",
+  "author": "tramampoline",
+  "license": "MIT",
+  "keywords": [
+    "reactJS",
+    "minesweeper",
+    "webpack"
+  ],
   "scripts": {
     "build": "webpack",
     "build:prod": "webpack -p",
     "start:dev": "webpack-dev-server",
     "prepush": "npm publish --access=public -q"
   },
-  "keywords": [
-    "reactJS",
-    "minesweeper",
-    "webpack"
-  ],
-  "author": "tramampoline",
-  "license": "MIT",
+  "main": "src/index.js",
   "dependencies": {
     "normalize.css": "^7.0.0",
     "react": "^16.1.1",
