@@ -7,7 +7,7 @@
     "build": "webpack",
     "build:prod": "webpack -p",
     "start:dev": "webpack-dev-server",
-    "prepush": "npm publish --access=public"
+    "prepush": "npm publish --access=public -q"
   },
   "keywords": [
     "reactJS",
