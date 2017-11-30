@@ -279,15 +279,9 @@ class Board extends React.Component
           totalCellsRevealed: 0,
       };
   }
-  // bubbleClick = ( rowIndex, columnIndex ) =>
-  // {
-  //   // event.preventDefault();
-  //   // console.log()
-  //   this.props.onClick( rowIndex, columnIndex );
-  // }
+
   handleClick( rowIndex, columnIndex)
   {
-    //event.preventDefault();
     console.log( `Click at row ${rowIndex}, column ${columnIndex}` );
 
     const cells = this.state.cells.slice().map( (row) => {
@@ -319,11 +313,6 @@ class Board extends React.Component
       console.log( "BOOM");
       // Game over
       stateToSet.gameLost = true;
-
-      // for( let cell in cells )
-      // {
-      //   cell.explosionVector = 
-      // }
     }
 
     //Handle revealing of multiple cells ( adjacent 0-values )
@@ -367,13 +356,11 @@ class Board extends React.Component
             adjacentCell.revealed = true;
             totalCellsRevealed++;
           }
-          // this.reveal( adjacentCell, totalCellsRevealed );
           if( adjacentCell.value === 0 && adjacentCell.processed === false )
           {
             cellsToProcess.push(adjacentCell);
           }
         }
-        // console.log( "Adjacent cells: ", adjacentCells );
       }
 
     }
@@ -421,12 +408,10 @@ class Board extends React.Component
     if( currentCell.flagState === BLANK )
     {
       currentCell.flagState = FLAGGED;
-      // stateToSet.numFlags = this.state.numFlags+1;
       this.props.incrementNumFlags();
     }
     else if( currentCell.flagState === FLAGGED )
     {
-      // stateToSet.numFlags = this.state.numFlags-1;
       this.props.decrementNumFlags();
       currentCell.flagState = UNSURE;
     }
@@ -462,19 +447,14 @@ class Board extends React.Component
       const cells = this.state.cells;
       let cellsToRender = [];
 
-      // for (let rowIndex = 0; rowIndex < cells.length; rowIndex++)
       for (let rowIndex = 1; rowIndex < cells.length-1; rowIndex++)
       {
-          // renderedRows.push(this.renderRow( cells[i], i));
           let rowToRender = [];
-          // for (let columnIndex = 0; columnIndex < cells[rowIndex].length; columnIndex++)
           for (let columnIndex = 1; columnIndex < cells[rowIndex].length-1; columnIndex++)
           {
 
             rowToRender.push(<Cell
                               key={columnIndex}
-
-                              // onClick={ () => this.handleClick( rowIndex, columnIndex ) }
                               handleClick={ () => this.handleClick( rowIndex, columnIndex ) }
                               handleRightClick={ ( event )  => this.handleRightClick(event, rowIndex, columnIndex )}
                               value={cells[rowIndex][columnIndex].value}
@@ -486,8 +466,8 @@ class Board extends React.Component
           {rowToRender}
           </div>);
       }
-      // return (<div className="board" onContextMenuCapture={ ( event ) => this.captureRightClick( event ) }>
-      return (<div className="board-container" >
+
+return (<div className="board-container" >
                 <div className="board">
                {cellsToRender}
                 </div>
@@ -498,102 +478,13 @@ class Board extends React.Component
 
 class Cell extends React.Component
 {
-
-  // constructor()
-  // {
-  //   super();
-  //   this.state = 
-  //   {
-  //     flagState: BLANK,
-  //   };
-  // }
-
-  // shouldComponentUpdate( nextProps, nextState )
-  // {
-  //   // console.log( "State: ", this.state, nextState );
-  //   // console.log( "Props: ", this.props, nextProps );
-  //   //The only time we need to rerender is when the cell is revealed, or its 'flagged/unflagged/questionmark' prop changes
-  //   return ( this.props.revealed === nextProps.revealed && this.props.flagState === nextProps.flagState ) ?  false : true
-  // }
-
-  // handleClick( cellFlagState )
-  // {
-  //   if( cellFlagState !== BLANK )
-  //   {
-  //     console.log( "NOCLICK" );
-  //           return;
-  //   }
-  //   console.log("CLICK");
-  //   this.props.handleClick();
-  // }
-
-  // handleRightClick(cellRevealed, cellFlagState)
-  // {
-  //   if( cellRevealed === true ) return;
-
-  //   console.log( "RIGHT CLICK", cellRevealed, cellFlagState );
-  //   let flagState = cellFlagState;
-
-  //   if( flagState === BLANK ) flagState = FLAGGED;
-  //   else if( flagState === FLAGGED ) flagState = UNSURE;
-  //   else flagState = BLANK;
-
-  //   this.setState({
-  //     flagState,
-  //   });
-
-  // }
-
-
   render()
   {
-    // let valueClassName = "BLANK";
-    // switch( this.props.value )
-    // {
-    //   case 1:
-    //     valueClassName = "one";
-    //     break;
-    //   case 2: valueClassName = "two"; break;
-    //   case 3: valueClassName = "three"; break;
-    //   case 4: valueClassName = "four"; break;
-    //   case 5: valueClassName = "five"; break;
-    //   case 6: valueClassName = "six"; break;
-    //   case 7: valueClassName = "seven"; break;
-    //   case 8: valueClassName = "eight"; break;
-    //   default: valueClassName = "blank";
-    // }
-
-    // return (
-    //   <button
-    //     className={`${this.props.revealed ? ( this.props.value === MINE_VALUE ? "revealed mine " : "revealed " ) :  this.props.flagState+" "}cell`}
-    //     onClick={  this.props.handleClick }
-    //     // onClick={  () => this.handleClick( this.state.flagState ) }
-    //     onContextMenu={ this.props.handleRightClick }
-    //     // onContextMenu={ () => this.handleRightClick(this.props.revealed, this.state.flagState ) }
-    //     >
-    //       <div className="flipper">
-    //         <figure className="front">
-    //           {
-    //            // this.props.value
-    //           }
-    //           {
-    //           //( this.props.revealed && this.props.value !== 0 ) ? this.props.value : ""
-    //           }
-    //         </figure>
-    //         <figure className="back">
-    //           { ( this.props.revealed && this.props.value !== 0 ) ? this.props.value : ""}
-    //         </figure>
-    //       </div>
-    //   </button>
-    // );
-
     return (
       <button
         className={`${this.props.revealed ? ( this.props.value === MINE_VALUE ? "revealed mine " : "revealed " ) :  this.props.flagState+" "}cell`}
         onClick={  this.props.handleClick }
-        // onClick={  () => this.handleClick( this.state.flagState ) }
         onContextMenu={ this.props.handleRightClick }
-        // onContextMenu={ () => this.handleRightClick(this.props.revealed, this.state.flagState ) }
         >
 
               { ( this.props.revealed && this.props.value !== 0 ) ? this.props.value : ""}
