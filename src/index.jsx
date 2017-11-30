@@ -603,7 +603,8 @@ class Cell extends React.Component
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+export const app = <App />;
+ReactDOM.render(app, document.getElementById('root'));
 
 function generateRandomNumberInRange( min, max )
 {
