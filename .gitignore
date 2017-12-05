@@ -7,8 +7,8 @@
 /coverage
 
 # production
-/build
-#/dist
+/dist
+!/dist/app-template.js
 src/**/*.css
 
 # misc
