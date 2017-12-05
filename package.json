@@ -1,6 +1,6 @@
 {
   "name": "@tramampoline/react-minesweeper",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "A minesweeper implementation built in ReactJS",
   "url": "https://github.com/trambopoline/react-minesweeper/issues",
   "author": "tramampoline",
