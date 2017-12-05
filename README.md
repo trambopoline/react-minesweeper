@@ -1,6 +1,8 @@
 
 # react-minesweeper
 
+Playable version at https://minesweeper.devindodson.com/
+
 ## Installation
 ```
 $ npm install
