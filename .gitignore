@@ -7,7 +7,7 @@
 /coverage
 
 # production
-/dist
+/dist/*
 !/dist/app-template.js
 src/**/*.css
 
