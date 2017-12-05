@@ -28,12 +28,7 @@ let config = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       }]
-  },
-  plugins: [new HtmlWebpackPlugin({
-    template: './src/index.html',
-    filename: 'index.html',
-    inject: 'body'
-  })]
+  }
 };
 
 let templateConfig = Object.assign({}, config, {
@@ -43,7 +38,7 @@ let templateConfig = Object.assign({}, config, {
     library: 'showAppTemplate',
     path: path.resolve(__dirname, 'dist'),
     filename: 'app-template.js',
-  },
+  }
 });
 let standaloneConfig = Object.assign({}, config, {
   entry: './src/index.jsx',
@@ -52,6 +47,11 @@ let standaloneConfig = Object.assign({}, config, {
       filename: 'bundle.js',
       path: path.resolve(__dirname, 'dist')
     },
+  plugins: [new HtmlWebpackPlugin({
+    template: './src/index.html',
+    filename: 'index.html',
+    inject: 'body'
+  })]
 });
 
 // Return Array of Configurations
